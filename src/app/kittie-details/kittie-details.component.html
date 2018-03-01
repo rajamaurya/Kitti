@@ -1,0 +1,30 @@
+<!--<div class="container">
+   <div class="row">
+     <div class="col">
+       <span class="badge"> {{SelectedKittie}} </span>
+
+     </div>
+   </div>
+
+</div> -->
+<router-outlet></router-outlet>
+<app-kittie-list #list1></app-kittie-list>
+<div class="card" *ngIf="kittilist.isSelected" style="float: left; width: 22rem; height: 30rem;">
+
+  <div class="card-img-top" > <!----*ngFor="let product of products"-->
+    <img  class="card-img-top" style="height: 14rem; width: 16rem; padding: 30px; margin-top: 30px" [src]=kittie.name />
+    <!---   <app-kittie-buy></app-kittie-buy> <app-kittie-sell></app-kittie-sell> -->
+    <button class="btn btn-success" (click)="payToBuyKittie(kittie.price)">Buy</button>
+  </div>
+  <div class="card-body">
+    <label class="card-title"> ${{kittie.price}}</label><br>
+    <label class="card-text" style="color: chocolate"> Description: {{kittie.description}}</label><br>
+
+  </div>
+  <div class="card-body">
+    <label class="card-text" style="color: chocolate"> Total Selected Products: {{kittilist.productCount}}</label><br>
+    <label class="card-text" style="color: chocolate"> Total Price: ${{kittilist.totalPrice}}</label><br>
+
+  </div>
+</div>
+

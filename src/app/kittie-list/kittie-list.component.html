@@ -1,0 +1,55 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-14" > <!--*ngIf="isSelected"-->
+      <div class="card"  *ngFor="let kitti of kitties" [class.slected]="kitti==SelectedKittie"
+             style="width: 18rem;height: auto; float:left; margin-left: 1rem">
+          <div class="card-img-top">
+                <img  class="card-img-top" style="height: 14rem; width: 16rem; padding: 30px; padding-left: 4rem; margin-top: 30px" [src]=kitti.name />
+         <!---   <app-kittie-buy></app-kittie-buy> <app-kittie-sell></app-kittie-sell> -->
+           <div style="padding-left: 4rem; width: 24rem">
+            <button class="btn btn-success" (click)="buyMyKittie(kitti)"><a routerLink="/kittie-details/:{{kitti.id}}"> Buy</a></button>
+            <button class="btn btn-secondary">Sell</button>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-plus"></span> Add To Cart
+            </button> </div>
+          </div>
+          <div class="card-body">
+                <label class="card-title"  style="color: chocolate;padding-left: 4rem"> $ {{kitti.price}}</label><br>
+                <label class="card-text" style="color: chocolate;padding-left: 4rem"> Description: {{kitti.description}}</label><br>
+
+        </div>
+
+     </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  <div class="card" *ngIf="isSelected" style="float: left; width: 22rem; height: 30rem;">
+  <div class="card-img-top" > <!----*ngFor="let product of products"--
+    <img  class="card-img-top" style="height: 14rem; width: 16rem; padding: 30px; margin-top: 30px" [src]=SelectedKittie.name>
+    <!---   <app-kittie-buy></app-kittie-buy> <app-kittie-sell></app-kittie-sell> --
+    <button class="btn btn-success" (click)="payToBuyKittie(SelectedKittie)">Buy</button>
+  </div>
+  <div class="card-body">
+    <label class="card-title"> ${{SelectedKittie.price}}</label><br>
+    <label class="card-text" style="color: chocolate"> Description: {{SelectedKittie.description}}</label><br>
+
+  </div>
+    <div class="card-body">
+      <label class="card-text" style="color: chocolate"> Total Selected Products: {{productCount}}</label><br>
+      <label class="card-text" style="color: chocolate"> Total Price: ${{totalPrice}}</label><br>
+
+    </div>
+  </div>
+
+  </div>
+  <div class="row">
+    <div class="payment" style="width: 800px" *ngIf="isPaymentSelected">
+      <app-kittie-buy></app-kittie-buy>
+    </div>
+  </div>
+</div>
+  </div> -->
+<router-outlet></router-outlet>
