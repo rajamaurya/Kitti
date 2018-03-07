@@ -3,7 +3,8 @@ import {Kittie} from '../kittie';
 import {KITTIES} from '../mock-kitties';
 import {KittieBuyComponent} from '../kittie-buy/kittie-buy.component';
 import {KittieListComponent} from '../kittie-list/kittie-list.component';
-
+import {ProductServiceService} from '../product-service.service';
+import {ActivatedRoute, Params} from '@angular/router';
 @Component({
   selector: 'app-kittie-details',
   templateUrl: './kittie-details.component.html',
@@ -12,10 +13,22 @@ import {KittieListComponent} from '../kittie-list/kittie-list.component';
 export class KittieDetailsComponent implements OnInit {
   kittilist: KittieListComponent;
   kittie: String;
-  constructor() {
+  constructor(private route: ActivatedRoute, private productServiceService: ProductServiceService) {
   }
-
+  kits: Kittie;
+  showErrorMessage: string;
+  kit: number;
   ngOnInit() {
+     this.kit = this.route.snapshot.params['id'];
+    // alert(this.kit);
+    this.getProductById();
+  }
+  getProductById(): void {
+    this.productServiceService.getProductById(this.kit).subscribe((kitObj) =>{this.kits = kitObj; /* alert("Success"+ this.kits); */}, (error) =>
+    {
+      this.showErrorMessage = "Problem with the service. Please try again!";
+      console.log(error);
+    });
   }
   clickedSelectedKitti(kittie: String): void {
     this.kittie = kittie;
