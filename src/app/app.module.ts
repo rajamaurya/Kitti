@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
+import {HttpModule,JsonpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import { KittieListComponent } from './kittie-list/kittie-list.component';
 import { KittieBuyComponent } from './kittie-buy/kittie-buy.component';
@@ -33,7 +33,7 @@ const appRoutes: Routes = [
     PageNotFoundComponent
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(appRoutes)
+    BrowserModule, HttpModule, JsonpModule, RouterModule.forRoot(appRoutes)
   ],
   providers: [ProductServiceService],
   bootstrap: [AppComponent]
