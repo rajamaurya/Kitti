@@ -8,7 +8,7 @@
                 <img  class="card-img-top" style="height: 14rem; width: 16rem; padding: 30px; padding-left: 4rem; margin-top: 30px" [src]=kitti.name />
          <!---   <app-kittie-buy></app-kittie-buy> <app-kittie-sell></app-kittie-sell> -->
            <div style="padding-left: 4rem; width: 24rem">
-            <button class="btn btn-success" (click)="buyMyKittie(kitti)"><a routerLink="/kittie-details/:{{kitti.id}}"> Buy</a></button>
+            <button class="btn btn-success" (click)="buyMyKittie(kitti)"><a [routerLink]="['/kittie-details',kitti.id]"> Buy</a></button>
             <button class="btn btn-secondary">Sell</button>
             <button type="button" class="btn btn-default btn-sm">
               <span class="glyphicon glyphicon-plus"></span> Add To Cart
