@@ -13,7 +13,7 @@ import {KITTIES} from '../mock-kitties';
 })
 // @Injectable()
 export class KittieListComponent implements OnInit {
-  @Output() myEvent = new EventEmitter();
+  @Output() notify: EventEmitter<String> = new EventEmitter<String>();
   title = 'Kittie';
   kitties = KITTIES;
   SelectedKittie: Kittie;
@@ -37,23 +37,23 @@ export class KittieListComponent implements OnInit {
    // return this.SelectedKittie;
   }
 
-  buyMyKittie(kittie: Kittie): any {
+  buyMyKittie(kittie: Kittie): void {
     this.SelectedKittie = kittie;
     this.isSelected = true;
-   // alert(this.isSelected);
+    // alert(JSON.stringify(this.SelectedKittie));
     this.products.push(kittie);
-    if (kittie.id > 1) {
+    // if (kittie.id >= 1) {
       this.productCount++;
     this.totalPrice += kittie.price;
     this.kittiebject.push(this.SelectedKittie);
-    this.myEvent.emit(this.products);
-   return [{ selectedOne : this.SelectedKittie,
+    this.notify.emit('HI');
+   /* return [{ selectedOne : this.SelectedKittie,
               Selected: this.isSelected,
               product: this.products
           }
-          ];
+          ]; */
     // this.router.navigate(['/kittie-details']);
-  }
+  // }
     // this.calculatePayment();
   }
   calculatePayment(): void {

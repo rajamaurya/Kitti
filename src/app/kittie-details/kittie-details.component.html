@@ -7,12 +7,13 @@
    </div>
 
 </div> -->
-<router-outlet></router-outlet>
-<app-kittie-list #list1></app-kittie-list>
-<div class="card" *ngIf="kittilist.isSelected" style="float: left; width: 22rem; height: 30rem;">
+<router-outlet> </router-outlet>
 
-  <div class="card-img-top" > <!----*ngFor="let product of products"-->
-    <img  class="card-img-top" style="height: 14rem; width: 16rem; padding: 30px; margin-top: 30px" [src]=kittie.name />
+<div class="card"  *ngIf="true" style="float: left; width: 22rem; height: 30rem;">
+
+  <div class="card-img-top"  > <!----*ngFor="let product of products"-->
+    <app-kittie-list (notify)="clickedSelectedKitti($event)"></app-kittie-list>
+    <img  class="card-img-top" style="height: 14rem; width: 16rem; padding: 30px; margin-top: 30px" [src]=kittie />
     <!---   <app-kittie-buy></app-kittie-buy> <app-kittie-sell></app-kittie-sell> -->
     <button class="btn btn-success" (click)="payToBuyKittie(kittie.price)">Buy</button>
   </div>

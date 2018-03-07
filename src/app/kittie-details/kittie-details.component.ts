@@ -11,12 +11,16 @@ import {KittieListComponent} from '../kittie-list/kittie-list.component';
 })
 export class KittieDetailsComponent implements OnInit {
   kittilist: KittieListComponent;
+  kittie: String;
   constructor() {
   }
 
   ngOnInit() {
   }
-  myKittie(): any { }
+  clickedSelectedKitti(kittie: String): void {
+    this.kittie = kittie;
+    console.log(this.kittie);
+  }
 /*
   buyMyKittie(kittie: Kittie): void {
     alert('hi');
