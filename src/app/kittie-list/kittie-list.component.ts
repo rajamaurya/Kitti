@@ -1,6 +1,8 @@
+
 import {Component, EventEmitter, Output, OnInit} from '@angular/core';
 import {Kittie} from '../kittie';
 import {KITTIES} from '../mock-kitties';
+import { ProductServiceService } from '../product-service.service';
 // import {Router, RouterModule} from '@angular/router';
 // import {ROUTER_PROVIDERS} from '@angular/router/src/router_module';
 
@@ -16,6 +18,7 @@ export class KittieListComponent implements OnInit {
   @Output() notify: EventEmitter<String> = new EventEmitter<String>();
   title = 'Kittie';
   kitties = KITTIES;
+  Kitties : Kittie[];
   SelectedKittie: Kittie;
   isSelected = false;
   isPaymentSelected = false;
@@ -24,9 +27,13 @@ export class KittieListComponent implements OnInit {
   productCount = 0;
   totalPrice = 0;
  // router: Router;
-  constructor() { }
+  constructor(private productServiceService: ProductServiceService) { }
 
   ngOnInit() {
+     this.getProducts();
+  }
+  getProducts(): void {
+    this.productServiceService.getProduts().subscribe(Kitties => this.Kitties = Kitties);
   }
    /*toggleSelected(): void {
      this.isSelected = !this.isSelected;
