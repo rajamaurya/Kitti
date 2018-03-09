@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/Observable/throw';
 import '../assets/json.json';
+import { of } from 'rxjs/observable/of';
 
 
 @Injectable()
@@ -15,14 +16,11 @@ export class ProductServiceService {
 
   constructor(private _http: Http) {  }
   
-  /*getProduts(): Observable<Kittie[]>{
-    return this._http.get("http://localhost:4200/kittie").map((response: Response) => <Kittie[]>response.json()).catch(this.handleError);
-  } */
+  getProduts(): Observable<Kittie[]>{
+    return of (KITTIES);
+  } 
   getProductById(id: number): Observable<Kittie>{
-   // alert(12232);
-     return this._http.get('../assets/json.json')
-      .map((response: Response) => (<Kittie>response.json()) , (error) => {alert("Hi error" + error);}); 
-  /*  return this._http.get('http://localhost:4200/kittie/' + id )
-      .map((response: Response) => <Kittie>response.json()); */
-  }
+   // alert(id);
+  //  alert(JSON.stringify(this.getProduts().map((kitties: Kittie[]) => kitties.find(kittie => kittie.id === id))));
+    return this.getProduts().map(kitties => kitties.find(kittie => kittie.id == id));
 }
