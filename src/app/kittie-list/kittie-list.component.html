@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-14" > <!--*ngIf="isSelected"-->
-      <div class="card"  *ngFor="let kitti of kitties" [class.slected]="kitti==SelectedKittie"
+      <div class="card"  *ngFor="let kitti of Kitties" [class.slected]="kitti==SelectedKittie"
              style="width: 18rem;height: auto; float:left; margin-left: 1rem">
           <div class="card-img-top">
                 <img  class="card-img-top" style="height: 14rem; width: 16rem; padding: 30px; padding-left: 4rem; margin-top: 30px" [src]=kitti.name />
